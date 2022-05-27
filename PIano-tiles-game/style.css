@@ -73,7 +73,7 @@ header {
   animation-duration: 1s;
 }
 .finalcard {
-    font-size: 1.2em;
+  font-size: 1.2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,23 +84,22 @@ header {
   animation-name: outro;
   animation-duration: 1s;
 }
-.tryagain{
-    font-size:2em;
-    width: 80%;
-    border-radius: 50px;
-    border: none;
-    color: coral;
-    background-color: white;
+.tryagain {
+  font-size: 2em;
+  width: 80%;
+  border-radius: 50px;
+  border: none;
+  color: coral;
+  background-color: white;
 }
-.tryagain:hover{
-    color:white;
-    background-color: var(--primary);
+.tryagain:hover {
+  color: white;
+  background-color: var(--primary);
 }
-.tryagain:active{
-    color: coral;
-    background-color: white;
+.tryagain:active {
+  color: coral;
+  background-color: white;
 }
-
 
 @keyframes glow {
   0% {
@@ -124,41 +123,41 @@ header {
     letter-spacing: 0.5em;
   }
 }
-@keyframes outro{
-    0%{
-        transform: scale(0);
-        opacity: 0;
-    }
-    80%{
-        opacity: 1;
-    }
-    100%{
-        transform: scale(1);
-    }
+@keyframes outro {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.animate{
-    animation-name: outro;
-    animation-duration: 1s;
+.animate {
+  animation-name: outro;
+  animation-duration: 1s;
 }
-@media screen and (max-width:1200px){
-    .container{
-        height:80vh;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .scorecard{
-        font-size: 3em;
-    }
-    #start{
-        height:3em;
-        font-size: 0.5em;
-    }
-    header{
-        font-size:2.5em;
-    }
-    .finalcard{
-        margin-top: 20vh;
-        justify-content: space-evenly;
-    }
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 100vh;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .scorecard {
+    font-size: 3em;
+  }
+  #start {
+    height: 3em;
+    font-size: 0.5em;
+  }
+  header {
+    font-size: 1.5em;
+  }
+  .finalcard {
+    margin-top: 20vh;
+    justify-content: space-evenly;
+  }
 }
-
