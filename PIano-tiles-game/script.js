@@ -16,6 +16,7 @@ tryagain.classList.add("tryagain");
 let glow = async (t, pos) => {
   setTimeout(() => {
     square[pos].classList.toggle("active");
+    playsound(1 + pos%5);
   }, 1000 * t);
   setTimeout(() => {
     square[pos].classList.toggle("active");
@@ -33,6 +34,13 @@ document.addEventListener("round", (e) => {
   });
 });
 
+function playsound(a){
+  let audio = new Audio(`sound${a}.wav`);
+  audio.play();
+}
+
+
+
 gameNotStarted = true;
 Started = false;
 // start loop
@@ -49,9 +57,12 @@ square.forEach((e, i) => {
   e.addEventListener("click", () => {
     let target = i;
     if (templist.includes(target)) {
+      playsound(1 + i%5);
       templist.splice(templist.indexOf(target), 1);
     } else {
       if (started) {
+        sound = new Audio("gameover.wav");
+        sound.play();
         scorecard.style.display = "none";
         box.style.display = "none";
         scorecard.classList.remove("animate");

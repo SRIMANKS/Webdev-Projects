@@ -6,6 +6,7 @@
 
 body {
   margin: 0px;
+  padding: 0px;
   font-family: "Roboto Mono", monospace;
   background-color: var(--bgcolor);
   color: white;
@@ -44,11 +45,11 @@ header {
 .square {
   background-color: var(--primary);
   border-radius: 10px;
-  box-sizing: border-box;
   transition-duration: 0.2s;
+  border: 2px solid var(--bgcolor);
 }
 .square:hover {
-  border: 1px solid white;
+  border: 2px solid white;
 }
 .square:active {
   background-color: white;
@@ -141,11 +142,13 @@ header {
 }
 @media screen and (max-width: 1200px) {
   .container {
-    width: 400px;
-    height: 80vh;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
   }
+
   .scorecard {
     font-size: 3em;
   }
@@ -159,5 +162,11 @@ header {
   .finalcard {
     margin-top: 20vh;
     justify-content: space-evenly;
+  }
+}
+@media screen and (max-width: 520px){
+  .box{
+    width: 400px;
+    height: 400px;
   }
 }
