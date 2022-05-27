@@ -141,7 +141,7 @@ header {
 }
 @media screen and (max-width: 1200px) {
   .container {
-    width: 100vh;
+    width: 400px;
     height: 80vh;
     flex-direction: column;
     justify-content: space-between;
