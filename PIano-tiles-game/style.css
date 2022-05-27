@@ -167,7 +167,7 @@ header {
 @media screen and (max-width: 520px){
   #start{
     height: 2em;
-    width: 80%;
+    width: 200px;
   }
   .box{
     width: 300px;
