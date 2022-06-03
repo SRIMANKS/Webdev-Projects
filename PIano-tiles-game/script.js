@@ -227,10 +227,10 @@ hardsquare.forEach((e, i) => {
           }</div><div> Final score: ${fscore}</div>`;
           let container = document.querySelector(".container");
           // highscore is caluclated and stored..  
-          if (fscore > highscore_hard) {
-            highscore_hard = fscore;
+          if (fscore > window.localStorage.getItem("highscore_hard")) {
+            window.localStorage.setItem("highscore_hard",fscore);
           }
-          highestscore.innerHTML = `<h1>Best Score(hard): ${highscore_hard}</h1>`;
+          highestscore.innerHTML = `<h1>Best Score(hard): ${window.localStorage.getItem("highscore_hard")}</h1>`;
           container.appendChild(finalcard);
           finalcard.appendChild(scorenumber);
           finalcard.appendChild(highestscore);
