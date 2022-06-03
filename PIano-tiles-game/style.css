@@ -4,6 +4,9 @@
   --secondary: cornflowerblue;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0px;
   padding: 0px;
@@ -26,14 +29,66 @@ header {
   justify-content: space-evenly;
   flex-direction: row;
 }
+.hardness{
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 200px;
+}
+.levels{
+  display: flex;
+  width:100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.hardness button{
+  padding: 0.2em 0.5em;
+  font-size:1em;
+  border-radius: 20px;
+}
+
+.easy{
+  border: none;
+  background: none;
+  color: rgb(27, 226, 27);
+  transition : 0.5s;
+}
+.easymode{
+  color: black;
+  background: rgb(27, 226, 27);
+}
+.hard{
+  border: none;
+  background: none;
+  color: crimson;
+  transition : 0.5s;
+}
+
+.hardmode{
+  color: black;
+  background: crimson;
+}
+
 .scorecard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 500px;
-  height: 400px;
+  height: 600px;
   font-size: 4em;
+}
+#idcount{
+  margin-left: 1em;
+}
+
+.score{
+  display: flex;
+  flex-direction: row;
 }
 .box {
   display: grid;
@@ -42,21 +97,32 @@ header {
   height: 500px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.square {
+.square,.hardsquare {
   background-color: var(--primary);
   border-radius: 10px;
   transition-duration: 0.2s;
   border: 2px solid var(--bgcolor);
 }
-.square:hover {
+.square:hover,.hardsquare:hover {
   border: 2px solid white;
 }
-.square:active {
+.square:active,.hardsquare:active {
   background-color: white;
 }
+
+.hardbox{
+  display: grid;
+  gap:1em;
+  width: 600px;
+  height: 600px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+
+
 #start {
   font-size: 1em;
-  width: 80%;
+  width: 7em;
   border-radius: 50px;
   border: none;
 }
@@ -74,23 +140,28 @@ header {
   animation-duration: 1s;
 }
 .finalcard {
-  font-size: 1.2em;
+  font-size:0.9em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   height: 400px;
   width: 400px;
-  background-color: var(--secondary);
+  background-color:#203150;
   border-radius: 50px;
   animation-name: outro;
   animation-duration: 1s;
 }
+.finalcard div div{
+  font-size: 1.5em;
+}
 .tryagain {
-  font-size: 2em;
+  font-size: 1.5em;
+  padding: 0.4em;
   width: 80%;
   border-radius: 50px;
   border: none;
-  color: coral;
+  color: var(--primary);
   background-color: white;
 }
 .tryagain:hover {
@@ -98,7 +169,7 @@ header {
   background-color: var(--primary);
 }
 .tryagain:active {
-  color: coral;
+  color: var(--primary);
   background-color: white;
 }
 
@@ -137,7 +208,14 @@ header {
   }
 }
 .animate {
+  transform: scale(1);
   animation-name: outro;
+  animation-duration: 1s;
+}
+.animate-out{
+  transform: scale(0);
+  animation-name: outro;
+  animation-direction: reverse;
   animation-duration: 1s;
 }
 @media screen and (max-width: 1200px) {
@@ -159,18 +237,32 @@ header {
   header {
     font-size: 1.5em;
   }
+  .box,.hardbox{
+    width: 90vw;
+    height: 90vw;
+  }
   .finalcard {
     margin-top: 20vh;
-    justify-content: space-evenly;
   }
 }
-@media screen and (max-width: 520px){
+@media screen and (max-width: 600px){
   #start{
     height: 2em;
     width: 200px;
   }
-  .box{
-    width: 300px;
-    height: 300px;
+ .box,.hardbox{
+   width: 90vw;
+   height: 90vw;
+ }
+  .scorecard{
+    height: 400px;
+    margin-bottom: 1em;
+  }
+  .finalcard h1{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font:1em;
+    width: 350px;
   }
 }
