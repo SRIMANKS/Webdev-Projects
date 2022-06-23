@@ -276,3 +276,4 @@ tryagain.addEventListener("click", () => {
   b = [Math.floor(Math.random() * 16)];
   c = [Math.floor(Math.random() * 36)];
 });
+
