@@ -260,6 +260,7 @@ window.addEventListener("deviceorientation", (e) => {
     b.left = false;
   }
   if(e.gamma>-20 && e.gamma<20){
+    console.log("not moving ")
     b.right = false;
     b.left = false;
   }
