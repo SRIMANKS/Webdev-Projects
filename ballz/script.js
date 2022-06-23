@@ -259,6 +259,10 @@ window.addEventListener("deviceorientation", (e) => {
     b.right = true;
     b.left = false;
   }
+  if(e.gamma>-20 && e.gamma<20){
+    b.right = false;
+    b.left = false;
+  }
   if (e.gamma < -20) {
     b.left = true;
     b.right = false;
