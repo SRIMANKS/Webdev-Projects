@@ -34,16 +34,17 @@ body{
 canvas{
     position: relative;
     background: transparent;
+    outline: 1px solid black;
 
 }
-.score{
-    
+.currentscore{
     position: absolute;
     right:1em;
     z-index: 40;
     font-size: 3em;
     color:white;
 }
+
 .home{
     background-color: #111;
     width: 100vw;
@@ -113,8 +114,8 @@ path:nth-of-type(6){
     justify-content: space-evenly;
     font-size: 1em;
     color:coral;
-    width: 40vw;
-    height: 30vh;
+    width: 400px;
+    height: 450px;
     background-color:#111;
     border-radius: 25px;
 }
@@ -135,4 +136,10 @@ path:nth-of-type(6){
     width: 100vw;
     height: 100vh;
     position: absolute;
+}
+
+@media screen and (max-width: 700px){
+    svg{
+        transform: scale(0.55);
+    }
 }

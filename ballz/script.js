@@ -12,8 +12,9 @@ var balldied = new Audio('balldied.wav');
 
 
 
-canvas.width = 800;
-canvas.height = innerHeight;
+canvas.width = window.screen.width;
+canvas.height = window.screen.height;
+console.log(canvas.width);
 let points = 0;
 let highscore = 0;
 your_score = document.querySelector("#your_score");
@@ -255,16 +256,16 @@ document.addEventListener("keypress", (e) => {
   }, 300);
 });
 window.addEventListener("deviceorientation", (e) => {
-  if (e.gamma > 20) {
+  if (e.gamma > 10) {
     b.right = true;
     b.left = false;
   }
-  if(e.gamma>-20 && e.gamma<20){
+  if(e.gamma>-10 && e.gamma<10){
     console.log("not moving ")
     b.right = false;
     b.left = false;
   }
-  if (e.gamma < -20) {
+  if (e.gamma < -10) {
     b.left = true;
     b.right = false;
   }
