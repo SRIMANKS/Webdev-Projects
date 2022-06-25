@@ -3,20 +3,26 @@ ctx = canvas.getContext("2d");
 box = document.querySelector(".box");
 bg = document.querySelector(".bg");
 home = document.querySelector(".home");
+currentscore = document.querySelector(".currentscore");
+current_life = document.querySelector(".life");
 scorecard = document.querySelector(".scorecard");
-var jumpsound = new Audio('jump.wav');
-var collide = new Audio('jump2.wav');
-var health = new Audio('healthpickup.wav');
-var balldied = new Audio('balldied.wav');
-
-
-
-
+var jumpsound = new Audio("jump.wav");
+var collide = new Audio("jump2.wav");
+var health = new Audio("healthpickup.wav");
+var balldied = new Audio("balldied.wav");
+var bgsound = new Audio("background sound.mp3");
 canvas.width = window.screen.width;
-canvas.height = window.screen.height;
+canvas.height = innerHeight;
 console.log(canvas.width);
 let points = 0;
 let highscore = 0;
+platformwidth = 100;
+movespeed = 2;
+if (canvas.width > 900) {
+  platformwidth = 170;
+  movespeed = 3.5;
+}
+
 your_score = document.querySelector("#your_score");
 high_score = document.querySelector("#high_score");
 touch = false;
@@ -42,6 +48,7 @@ function game_start() {
   gamestart = true;
   home.style.zIndex = -1;
   scorecard.style.display = "none";
+  currentscore.innerText = `Score: ${points}`;
   life = 2;
   list_of_hearts = [];
   list_of_platform = [];
@@ -49,17 +56,22 @@ function game_start() {
 function game_over() {
   gamestart = false;
   // blur background
-  your_score.innerText = `score: ${points}`;
-  if(highscore<points){
+  your_score.innerText = `Score: ${points}`;
+  if (highscore < points) {
     highscore = points;
   }
   high_score.innerText = `highscore: ${highscore}`;
   scorecard.style.display = "flex";
   canvas.classList.toggle("blur");
   bg.classList.toggle("blur");
+  points = 0;
 }
 
-start.addEventListener("click", ()=>{
+start.addEventListener("click", () => {
+  bgsound.play();
+  setInterval(() => {
+    bgsound.play();
+  }, 215000);
   gamestart = true;
   home.style.zIndex = -1;
 });
@@ -116,7 +128,7 @@ class heart {
   }
   draw() {
     var heart = new Image();
-    heart.src = "/heart-svgrepo-com (1).svg";
+    heart.src = "heart.png";
     ctx.drawImage(heart, this.x, this.y, 30, 30);
   }
 }
@@ -128,24 +140,26 @@ console.log(ph);
 createplatforms = setInterval(() => {
   if (gamestart) {
     p = new platform(
-      Math.floor(Math.random() * (canvas.width - 120)),
+      Math.floor(Math.random() * (canvas.width - platformwidth)),
       innerHeight,
-      120,
+      platformwidth,
       15,
-      "#111"
+      "red"
     );
     list_of_platform.push(p);
   }
 }, 1500);
 setInterval(() => {
-  h = new heart(canvas.width, canvas.height);
-  list_of_hearts.push(h);
-  console.log("pushed");
-  setTimeout(() => {
-    list_of_hearts.pop();
-    console.log("poped");
-  }, 8000);
-}, 10000);
+  if (gamestart) {
+    h = new heart(canvas.width, canvas.height);
+    list_of_hearts.push(h);
+    console.log("pushed");
+    setTimeout(() => {
+      list_of_hearts.pop();
+      console.log("poped");
+    }, 8000);
+  }
+}, 30000);
 
 // main loop of the programe (120fps)
 setInterval(() => {
@@ -157,6 +171,7 @@ setInterval(() => {
         if (Math.abs(hearts.y - b.y) <= 20) {
           health.play();
           life += 1;
+          current_life.innerText = `Life: ${life}`;
           list_of_hearts.pop();
         }
       }
@@ -170,8 +185,10 @@ setInterval(() => {
         b.x <= e.x + e.width
       ) {
         e.contact = true;
+        e.color = "crimson";
       } else {
         e.contact = false;
+        e.color = "red";
       }
       if (e.contact) {
         b.y = b.y - ph.speed;
@@ -194,6 +211,7 @@ setInterval(() => {
           collide.play();
         }
         points = points + 1;
+        currentscore.innerText = `Score: ${points}`;
       }
     });
     if (!b.contact && !b.jump) {
@@ -202,10 +220,10 @@ setInterval(() => {
     }
 
     if (b.left && b.x - b.radius >= 0) {
-      b.x = b.x - ph.speed;
+      b.x = b.x - movespeed;
     }
     if (b.right && b.x + b.radius < canvas.width) {
-      b.x = b.x + ph.speed;
+      b.x = b.x + movespeed;
     }
     if (b.jump) {
       b.y = b.y - ph.jump;
@@ -213,6 +231,7 @@ setInterval(() => {
 
     if (b.y > innerHeight + b.radius) {
       life--;
+      current_life.innerText = `Life: ${life}`;
       console.log(life);
       if (life == 0) {
         game_over();
@@ -220,6 +239,9 @@ setInterval(() => {
         b.y = b.radius;
         b.x = canvas.width / 2;
       }
+    }
+    if(b.y-b.radius<=0){
+      game_over();
     }
     b.draw();
   }
@@ -260,13 +282,22 @@ window.addEventListener("deviceorientation", (e) => {
     b.right = true;
     b.left = false;
   }
-  if(e.gamma>-10 && e.gamma<10){
-    console.log("not moving ")
+  if (e.gamma > -10 && e.gamma < 10) {
+    console.log("not moving");
     b.right = false;
     b.left = false;
   }
   if (e.gamma < -10) {
     b.left = true;
     b.right = false;
+  }
+});
+document.addEventListener("touchstart", (e) => {
+  if (b.contact) {
+    b.jump = true;
+    jumpsound.play();
+    setTimeout(() => {
+      b.jump = false;
+    }, 300);
   }
 });
