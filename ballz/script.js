@@ -16,7 +16,7 @@ canvas.height = innerHeight;
 console.log(canvas.width);
 let points = 0;
 let highscore = 0;
-platformwidth = 100;
+platformwidth = 90;
 movespeed = 2;
 if (canvas.width > 900) {
   platformwidth = 170;
@@ -170,8 +170,8 @@ setInterval(() => {
       if (Math.abs(hearts.x - b.x) <= 20) {
         if (Math.abs(hearts.y - b.y) <= 20) {
           health.play();
-          life += 1;
           current_life.innerText = `Life: ${life}`;
+          life += 1;
           list_of_hearts.pop();
         }
       }
@@ -240,7 +240,7 @@ setInterval(() => {
         b.x = canvas.width / 2;
       }
     }
-    if(b.y-b.radius<=0){
+    if(b.y<=0){
       game_over();
     }
     b.draw();

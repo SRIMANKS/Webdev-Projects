@@ -70,7 +70,9 @@ canvas{
     align-items: center;
     justify-content: space-around;
 }
-
+#img1{
+    box-shadow: drop-shadow(0px 0px 10px black);
+}
 
 .bg{
     background: url(/background.jpg);
