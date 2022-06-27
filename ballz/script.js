@@ -9,13 +9,11 @@ scorecard = document.querySelector(".scorecard");
 var jumpsound = new Audio("jump.wav");
 var collide = new Audio("jump2.wav");
 var health = new Audio("healthpickup.wav");
-var balldied = new Audio("balldied.wav");
 var bgsound = new Audio("background sound.mp3");
 canvas.width = window.screen.width;
 canvas.height = innerHeight;
-console.log(canvas.width);
 let points = 0;
-let highscore = 0;
+highscore = 0;
 platformwidth = 90;
 movespeed = 2;
 if (canvas.width > 900) {
@@ -31,12 +29,12 @@ tryagain = document.querySelector(".tryagain");
 //start button
 start = document.querySelector(".start");
 
-try {
-  highscore = localStorage.getItem("highscore");
-} catch {
-  highscore = 0;
-  localStorage.setItem("highscore", 0);
-}
+try{
+  console.log(window.localStorage.getItem("highscore"));
+  }
+  catch(e){
+    window.localStorage.setItem("highscore",0);
+  }
 
 life = 1;
 gamestart = false;
@@ -59,7 +57,9 @@ function game_over() {
   your_score.innerText = `Score: ${points}`;
   if (highscore < points) {
     highscore = points;
+    localStorage.setItem('highscore', highscore);
   }
+  highscore = localStorage.getItem('highscore');
   high_score.innerText = `highscore: ${highscore}`;
   scorecard.style.display = "flex";
   canvas.classList.toggle("blur");

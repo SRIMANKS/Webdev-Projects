@@ -151,10 +151,18 @@ path:nth-of-type(6){
 .tryagain{
     width: 80%;
     font-size: 1.2em;
+    font-weight: bold;
     color:coral;
     background-color: #111;
     border: 2px solid coral;
     padding: 1em;
+}
+.tryagain:hover{
+    border: 2px solid blue;
+    cursor: pointer;
+    color: purple;
+    transition: 1s;
+
 }
 
 .bg{
