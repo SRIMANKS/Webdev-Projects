@@ -22,12 +22,12 @@ body{
     border: 2px solid white;
 }
 .start:hover{
-    border: 2px solid yellow;
-    color: yellow;
-    transition: 1s;
+    border: 2px solid #3C50B1;
+    color: crimson;
+    transition: 0.5s;
 }
 .start:active{
-    color: white;
+    color: red;
 }
 .container{
     overflow-x: hidden;

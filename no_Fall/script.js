@@ -124,8 +124,8 @@ class physics {
 
 class heart {
   constructor(width, height) {
-    this.x = Math.floor(Math.random() * width);
-    this.y = Math.floor(Math.random() * height);
+    this.x = Math.floor(20 + Math.random() * (width-20));
+    this.y = Math.floor(20 + Math.random() * (height-20));
   }
   draw() {
     var heart = new Image();
@@ -171,8 +171,8 @@ setInterval(() => {
       if (Math.abs(hearts.x - b.x) <= 20) {
         if (Math.abs(hearts.y - b.y) <= 20) {
           health.play();
-          current_life.innerText = `Life: ${life}`;
           life += 1;
+          current_life.innerText = `Life: ${life}`;
           list_of_hearts.pop();
         }
       }
@@ -276,7 +276,7 @@ document.addEventListener("keypress", (e) => {
   }
   setTimeout(() => {
     b.jump = false;
-  }, 300);
+  }, 200);
 });
 window.addEventListener("deviceorientation", (e) => {
   if (e.gamma > 10) {
