@@ -48,12 +48,14 @@ canvas{
 }
 .life{
     position: absolute;
+    top: 30px;
     left:1em;
     z-index: 40;
     font-size: 3em;
     color: white;
 }
 .currentscore{
+    top:30px;
     position: absolute;
     right:1em;
     z-index: 40;
@@ -147,7 +149,15 @@ path:nth-of-type(6){
     border-radius: 25px;
     animation: gover 1s ease forwards;
 }
-
+.thorn{
+    position: absolute;
+    width:100vw;
+    height:30px;
+    background: url(/thronelong.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    outline: 1px solid black;
+}
 .tryagain{
     width: 80%;
     font-size: 1.2em;
@@ -158,9 +168,9 @@ path:nth-of-type(6){
     padding: 1em;
 }
 .tryagain:hover{
-    border: 2px solid blue;
+    border: 2px solid #3C50B1;
     cursor: pointer;
-    color: purple;
+    color: crimson;
     transition: 1s;
 
 }

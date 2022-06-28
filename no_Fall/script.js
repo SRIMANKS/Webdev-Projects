@@ -10,6 +10,7 @@ var jumpsound = new Audio("jump.wav");
 var collide = new Audio("jump2.wav");
 var health = new Audio("healthpickup.wav");
 var bgsound = new Audio("background sound.mp3");
+
 canvas.width = window.screen.width;
 canvas.height = innerHeight;
 let points = 0;
@@ -134,7 +135,7 @@ class heart {
 }
 list_of_platform = [];
 list_of_hearts = [];
-b = new ball(canvas.width / 2, 15, 15, "white");
+b = new ball(canvas.width / 2, 50, 15, "white");
 ph = new physics(3, 2, 10);
 console.log(ph);
 createplatforms = setInterval(() => {
@@ -144,7 +145,7 @@ createplatforms = setInterval(() => {
       innerHeight,
       platformwidth,
       15,
-      "red"
+      "#3c50b1"
     );
     list_of_platform.push(p);
   }
@@ -185,10 +186,10 @@ setInterval(() => {
         b.x <= e.x + e.width
       ) {
         e.contact = true;
-        e.color = "crimson";
+        e.color = "#3C50B1";
       } else {
         e.contact = false;
-        e.color = "red";
+        e.color = "crimson";
       }
       if (e.contact) {
         b.y = b.y - ph.speed;
@@ -236,11 +237,11 @@ setInterval(() => {
       if (life == 0) {
         game_over();
       } else {
-        b.y = b.radius;
+        b.y = b.radius + 30;
         b.x = canvas.width / 2;
       }
     }
-    if(b.y<=0){
+    if(b.y<45){
       game_over();
     }
     b.draw();
